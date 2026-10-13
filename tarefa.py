@@ -29,19 +29,23 @@ id = create(id)
 
 while True:
 
-        escolha = input("Deseja cadastrar uma nova tarefa? [S/N] ").upper()
-        if escolha != "S" and escolha != "N":
-            print("Digite um valor valido.")
-        elif escolha == "S":
-            id = create(id)
-        elif escolha == "N":
-             break
+    escolha = input("Deseja cadastrar uma nova tarefa? [S/N] ").upper()
+    if escolha != "S" and escolha != "N":
+        print("Digite um valor valido.")
+    elif escolha == "S":
+        id = create(id)
+    elif escolha == "N":
+         break
 
 def read():
-    
+    encontrado = False
+    busca = input("Digite a tarefa que deseja buscar: ")
     for dado in lista_tarefas:
-        print(f"ID: {dado.id} \n Nome da tarefa: {dado.nome}\n Data da Tarefa: {dado.data}\n Inicio: {dado.inicio}\n Fim: {dado.fim}")
-
+        if dado.nome == busca:
+            encontrado = True
+            print(f"ID: {dado.id} \n Nome da tarefa: {dado.nome} \n Data da Tarefa: {dado.data}\n Inicio: {dado.inicio}\n Fim: {dado.fim}")
+    if encontrado == False:
+        print("Tarefa não encontrada.")
 read()
 
 def update():

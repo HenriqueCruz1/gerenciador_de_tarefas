@@ -1,7 +1,9 @@
 lista_de_usuarios = []
+id = 1
 
 class Usuario:
         def __init__(self, nome, idade):
+            self.id = id
             self.nome = nome
             self.idade = idade
 
@@ -11,11 +13,22 @@ def create():
 
     idade = int(input('Digite a idade do usuario: '))
 
-    usuario = Usuario(nome, idade)
+    usuario = Usuario(id, nome, idade)
     lista_de_usuarios.append(usuario)
+    id += 1
+    return id
 
+id = create(id)
 
-create()
+while True:
+
+    escolha = input("Deseja cadastrar uma nova tarefa? [S/N] ").upper()
+    if escolha != "S" and escolha != "N":
+        print("Digite um valor valido.")
+    elif escolha == "S":
+        id = create(id)
+    elif escolha == "N":
+         break
 
 
 def read():
